@@ -22,7 +22,20 @@ const createPost = async (req,res)=> {
     
 }
 
+const getAllPost = async(req,res)=> {
+    try {
+        const result = await Posts.find()
+        res.status(200).json({
+            result
+        })
+    } catch (error) {
+       res.status(500).json({
+        error
+       }) 
+    }
+}
 
 module.exports = {
-    createPost
+    createPost,
+    getAllPost
 }
