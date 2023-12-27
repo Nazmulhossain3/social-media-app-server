@@ -11,6 +11,7 @@ app.use(cors())
 
 
 const postRoute = require('./src/Post/post.route') 
+const aboutRoute = require('./src/About/about.route')
 
 
 // Connect to the database using mongoose
@@ -24,6 +25,7 @@ mongoose.connect('mongodb://social-media:LuaD6XcvDQRsMklE@ac-onjpk5k-shard-00-00
 
 
 app.use('/post-route', postRoute)
+app.use('/about-route',aboutRoute )
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

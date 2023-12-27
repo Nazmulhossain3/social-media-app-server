@@ -35,7 +35,29 @@ const getAllPost = async(req,res)=> {
     }
 }
 
+const getSinglePost = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const result = await Posts.findById(id);
+
+    if (!result) {
+      // If no post is found with the given ID
+      return res.status(404).json({ error: 'Post not found' });
+    }
+
+    res.status(200).json({
+      result
+    });
+  } catch (error) {
+    res.status(500).json({
+      error
+    });
+  }
+};
+
+
 module.exports = {
     createPost,
-    getAllPost
+    getAllPost,
+   getSinglePost
 }
