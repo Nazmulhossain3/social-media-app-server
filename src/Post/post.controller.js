@@ -83,18 +83,28 @@ const incrementPostReaction = async (req, res) => {
   }
 };
 
+const getTopPosts = async(req,res)=> {
 
-module.exports = {
-  createPost,
-  getAllPost,
-  getSinglePost,
-  incrementPostReaction,
-};
+  try {
+    const result = await Posts.find().sort({ reactions: -1 }) 
+    .limit(3)
+    res.json({ result });
+  } catch (error) {
+    res.status(500).json({
+      error
+    });
+  }
+
+}
+
+
+
 
 
 module.exports = {
     createPost,
     getAllPost,
    getSinglePost,
-   incrementPostReaction
+   incrementPostReaction,
+   getTopPosts
 }
