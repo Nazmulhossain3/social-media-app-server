@@ -36,10 +36,10 @@ const updateAbout = async(req,res)=> {
           aboutId,
           {
             $set: {
-              name: req.body.Name || '',
-              university: req.body.University || '',
-              email: req.body.Email || '',
-              address: req.body.Address || '',
+              name: req.body.Name || req.body.Name,
+              university: req.body.University || req.body.University,
+              email: req.body.Email || req.body.Email,
+              address: req.body.Address ||  req.body.Address,
             },
           },
           { new: true } // Return the updated document
